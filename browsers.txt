@@ -1,0 +1,53 @@
+Target browser compatibility for TITAN PULSE:
+
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Safari
+- Brave
+- Opera
+- Opera GX
+- Vivaldi
+- Arc
+- Chromium
+- Google Chrome Android
+- Firefox Android
+- Brave Android
+- Samsung Internet
+- Microsoft Edge Android
+- Opera Android
+- Vivaldi Android
+- DuckDuckGo Browser
+- Tor Browser
+- Firefox Focus
+- DuckDuckGo Privacy Browser
+- Yandex Browser
+- UC Browser
+- Kiwi Browser
+- Pale Moon
+- Waterfox
+- LibreWolf
+- Floorp
+- Basilisk
+- SeaMonkey
+- Midori
+- Falkon
+- GNOME Web
+- Konqueror
+- Otter Browser
+- Slimjet
+- Maxthon
+- Avast Secure Browser
+- AVG Secure Browser
+- CCleaner Browser
+- Epic Privacy Browser
+- UR Browser
+- Comodo Dragon
+- Cent Browser
+- SRWare Iron
+- Naver Whale
+- QQ Browser
+- Cốc Cốc
+- Orion Browser
+
+Note: actual compatibility depends on browser version, Web APIs, JavaScript, storage, media and permission policies.

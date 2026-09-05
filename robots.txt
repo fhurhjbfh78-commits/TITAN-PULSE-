@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fhurhjbfh78-commits.github.io/TITAN-PULSE-/sitemap.xml
