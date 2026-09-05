@@ -3469,16 +3469,30 @@
         }
 
         /* المتصفحات تمنع الصوت التلقائي قبل أي تفاعل من المستخدم — نفعّله فوراً عند أول ضغطة/لمسة */
+        let gateVideoUnlocked = false;
         function enableGateVideoSoundOnFirstInteraction() {
+            if (gateVideoUnlocked) return;
             const video = document.getElementById('gateVideo');
-            const enable = () => { if (video) { video.muted = false;
+
+            const enable = () => {
+                if (gateVideoUnlocked) return;
+                gateVideoUnlocked = true;
+
+                document.removeEventListener('pointerdown', enable);
+                document.removeEventListener('keydown', enable);
+
+                if (!video) return;
+
+                try {
+                    video.muted = false;
+                    video.defaultMuted = false;
                     video.volume = 1;
-                    video.play().catch(() => {}); }
-                document.removeEventListener('click', enable);
-                document.removeEventListener('touchstart', enable);
-                document.removeEventListener('keydown', enable); };
-            document.addEventListener('click', enable, { once: true });
-            document.addEventListener('touchstart', enable, { once: true });
+                    const p = video.play();
+                    if (p && typeof p.catch === 'function') p.catch(() => {});
+                } catch (_) {}
+            };
+
+            document.addEventListener('pointerdown', enable, { once: true, passive: true });
             document.addEventListener('keydown', enable, { once: true });
         }
 
@@ -3548,7 +3562,23 @@
             playSound('tap');
         }
 
+        let appAlreadyRevealed = false;
         function revealApp() {
+            if (appAlreadyRevealed) return;
+            appAlreadyRevealed = true;
+
+            const gate = document.getElementById('gateVideo');
+            if (gate) {
+                try {
+                    gate.pause();
+                    gate.muted = true;
+                    gate.defaultMuted = true;
+                    gate.volume = 0;
+                    gate.removeAttribute('src');
+                    gate.load();
+                } catch (_) {}
+            }
+
             document.getElementById('gateScreen').classList.remove('show');
             document.getElementById('appRoot').classList.add('reveal');
             playSound('success');
